@@ -73,7 +73,6 @@ jobs:
       
       environment: dev   # 👈 aquí pones el entorno con aprobación manual
       
-
       steps:
       - name: Checkout del código
         uses: actions/checkout@v3

@@ -1,4 +1,4 @@
-from docx import Document
+from docx import Document   # python-docx
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import qn
