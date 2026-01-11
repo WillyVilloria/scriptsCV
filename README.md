@@ -10,3 +10,5 @@ varios scripts de python con herramientas
 3.- Creación de cv en documento .docx
 4.- Creación de cv en inglés .docx
 
+**Las ramas son independientes no subir a develop ni a master.**
+
