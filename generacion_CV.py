@@ -176,7 +176,7 @@ class Documento:
         exp1.add_run("Desarrollador / Analista - Grupo Intermarkit (2022 - Actualidad)").bold = True
         experiencia = [
             "Desarrollo de soluciones de análisis de datos en Python y SQL.",
-            "Desarrollo de aplicaciones java (spring boot) y python (FastAPI) para web-Backend.",
+            "Desarrollo de aplicaciones java (Spring Boot) y python (FastAPI, Flask) para web-Backend.",
             "Automatización de procesos ETL y explotación de bases de datos.",
             "Visualización de resultados y KPIs con Power BI y Tableau.",
             "Desarrollo de proyectos de visión artificial con modelos de segmentación y detección.",
@@ -285,7 +285,7 @@ class Documento:
 
     def guardar(self):
         # Guardar documento
-        output_path_visual = f"../../CV/CV_Miguel_Angel_Lorenzo_Villoria_Data_Visual_A{self.fecha.day}.docx"
+        output_path_visual = f"../../CV/CV_Miguel_Angel_Lorenzo_Villoria_Data_Visual_{self.fecha.month}{self.fecha.day}.docx"
         self.doc.save(output_path_visual)
 
         output_path_visual
