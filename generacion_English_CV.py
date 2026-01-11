@@ -179,7 +179,7 @@ class Documento:
         exp1.add_run(self.translate.translate("Desarrollador / Analista - Grupo Intermarkit (2022 - Actualidad)", dest='en').text).bold = True
         experiencia = [
             "Desarrollo de soluciones de análisis de datos en Python y SQL.",
-            "Desarrollo de aplicaciones java (spring boot) para web-Backend.",
+            "Desarrollo de aplicaciones java (Spring Boot) y python (FastAPI, Flask) para web-Backend.",
             "Automatización de procesos ETL y explotación de bases de datos.",
             "Visualización de resultados y KPIs con Power BI y Tableau.",
             "Desarrollo de proyectos de visión artificial con modelos de segmentación y detección.",
@@ -273,7 +273,7 @@ class Documento:
         # ===== HABILIDADES TÉCNICAS =====
         self.add_colored_heading(self.translate.translate("Habilidades Técnicas", dest='en').text, 1)
         habilidades = [
-            "Python (pandas, NumPy, scikit-learn, matplotlib, seaborn), SQL, C# .NET, Java, C/C++.",
+            "Python (pandas, NumPy, scikit-learn, matplotlib, seaborn, sqlAlchemy, Pydantic, Alembic), SQL, C# .NET, Java, C/C++.",
             "Machine Learning, Big Data (Hadoop, Spark).",
             "Cloud Computing (AWS, Azure, GCP), DevOps, Git.",
             "Power BI, Tableau, Qlikview, Looker.",
@@ -293,7 +293,7 @@ class Documento:
 
     def guardar(self):
         # Guardar documento
-        output_path_visual = f"../CV/ECV_Miguel_Angel_Lorenzo_Villoria_Data_Visual{self.fecha.day}.docx"
+        output_path_visual = f"../../CV/ECV_Miguel_Angel_Lorenzo_Villoria_Data_Visual_0{self.fecha.month}_{self.fecha.day}.docx"
         self.doc.save(output_path_visual)
 
         output_path_visual
