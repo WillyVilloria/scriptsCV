@@ -1,0 +1,56 @@
+{
+    "perfil_profesional": {
+        "perfil1": "Desarrollador / Analista de Datos con formación avanzada en Big Data, Ciencia de Datos y Cloud Computing. Especialista en análisis de datos con Python y SQL no SQL, desarrollo de aplicaciones, machine learning y visualización de información.",
+        "perfil2": "Experiencia en la implementación de modelos de Machine Learning avanzados, incluyendo redes neuronales profundas, convolucionales (CNN), recurrentes (LSTM) y modelos de lenguaje (LLM). Capacidad demostrada en la creación de modelos propios y en la adaptación de arquitecturas existentes mediante técnicas de fine-tuning, orientadas a resolver necesidades específicas de negocio y optimizar la toma de decisiones.",
+        "perfil3": "Con visión estratégica, aporto la capacidad de transformar datos en conocimiento accionable y de impulsar la innovación tecnológica en sectores como banca, consultoría y corporativo.",
+        "perfil4": "Amplios conocimientos de Hadoop y Spark para entornos Big Data.",
+        "perfil5": "Más de 10 años de experiencia en proyectos tecnológicos y energéticos."
+    },
+    "experiencia_profesional":{
+        "experiencia1": {"titulo": "Desarrollador / Analista - Grupo Intermarkit (2022 - Actualidad)", "desarrollo": [
+            "Desarrollo de soluciones de análisis de datos en Python y SQL.",
+            "Desarrollo de aplicaciones java (Spring Boot) y python (FastAPI, Flask) para web-Backend.",
+            "Automatización de procesos ETL y explotación de bases de datos.",
+            "Visualización de resultados y KPIs con Power BI y Tableau.",
+            "Desarrollo de proyectos de visión artificial con modelos de segmentación y detección.",
+            "Minería de datos, con aplicación de técnicas de clustering y segmentación.",
+            "Web scraping, orientado a la extracción, estructuración y análisis de información desde diversas fuentes y análisis con modelos de lenguaje LLM tipo Bert, gpt etc.",
+            "Trabajo en entornos cloud y metodologías ágiles."]
+        },
+        "experiencia2": {"titulo": "Jefe de Operaciones / Servicio - UTE ESE CLECE - Gas Natural Fenosa (2012 - 2022)", "desarrollo": [
+            "Dirección de proyectos de eficiencia energética de gran escala (>10MW).",
+            "Desarrollo de aplicación en C# con MySQL para gestión de datos operativos.",
+            "Coordinación de equipos multidisciplinares y control de KPIs.",
+            "Implementación de soluciones de monitorización digital de instalaciones."]
+        },
+        "experiencia3": {"titulo": "Responsable de Proyectos e Instalaciones - Energía y Servicios Energéticos Plus S.A.\n", "desarrollo": "Gestión de proyectos energéticos con preferencia en control de datos técnicos y procesos."},
+        "experiencia4": {"titulo": "Director Técnico - Audiner Asesores Energéticos S.L."},
+        "experiencia5": {"titulo": "Jefe de Sector - Giroa S.A.U. (Grupo Veolia), Asturias"},
+        "experiencia6": {"titulo": "Jefe de Servicio - Integra - Clece S.A. (Grupo ACS - Dragados)"},
+        "experiencia7": {"titulo": "Inspector Técnico - ECA S.A."}
+    },
+    "logros_destacados": {"logros": [
+            "Estudio analítico para el aumento de potencia instalada en planta de producción de frío industrial en MercaMadrid.",
+            "Optimización del consumo energético en Complejo Ministerial mediante análisis predictivo y modelado estadístico.",
+            "Proyectos de visión artificial, aplicando redes neuronales profundas para la detección y clasificación de patrones en imágenes.",
+            "Desarrollo de aplicaciones web backend en Java, integradas con bases de datos y orientadas a la gestión y explotación de información.",
+            "Minería de datos y clustering para segmentación y descubrimiento de insights en grandes volúmenes de información."]
+    },
+    "formacion_academica": {"formacion": [
+            "Máster Universitario en Big Data y Ciencia de Datos - Universidad Internacional de Valencia (VIU)",
+            "Experto Universitario en Programación Python y Ciencia de Datos - VIU",    
+            "Experto Universitario en DevOps y Cloud Computing - UNIR",
+            "Ingeniero Técnico de Minas - Universidad de Oviedo"]
+    },
+    "habilidades_tecnicas": {"habilidades": [
+            "Python (pandas, NumPy, scikit-learn, matplotlib, seaborn, sqlAlchemy, Pydantic, Alembic), SQL, C# .NET, Java, C/C++.",
+            "Machine Learning, Big Data (Hadoop, Spark).",
+            "Cloud Computing (AWS, Azure, GCP), DevOps, Git.",
+            "Power BI, Tableau, Qlikview, Looker.",
+            "Metodologías Agile/Scrum."]
+    },
+    "idiomas": {
+        "idioma1": ["Español: Nativo"],
+        "idioma2": ["Inglés (Nivel alto - lectura, escritura y expresión oral)"]
+    }
+}
