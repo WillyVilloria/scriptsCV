@@ -1,10 +1,10 @@
+import json
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 from datetime import datetime 
-#from googletrans import Translator
 from docx.shared import Cm
 
 # Crear documento
@@ -13,6 +13,10 @@ class Documento:
     def __init__(self):
         self.doc = Document()
         self.fecha = datetime.now()
+        #abro el archivo json de texto común
+
+        with open('texto_comun.json', 'r', encoding='utf-8') as f:
+            self.textos_json = json.load(f)
 
     def ecabezado(self):
         # margenes
@@ -33,8 +37,8 @@ class Documento:
         # Ajustar márgenes
         section.top_margin = Cm(2.0)       # margen superior
         section.bottom_margin = Cm(2.0)    # margen inferior
-        section.left_margin = Cm(3)        # margen izquierdo
-        section.right_margin = Cm(3)       # margen derecho
+        section.left_margin = Cm(2.5)        # margen izquierdo
+        section.right_margin = Cm(2.0)       # margen derecho
 
     def pie(self):
         # Acceder al pie de página de la primera sección
@@ -142,29 +146,24 @@ class Documento:
         # ===== PERFIL PROFESIONAL =====
         self.add_colored_heading("Perfil Profesional", 1)
         perfil1 = self.doc.add_paragraph(
-            "Desarrollador / Analista de Datos con formación avanzada en Big Data, Ciencia de Datos y Cloud Computing. Especialista en análisis de datos con " \
-            "Python y SQL no SQL, desarrollo de aplicaciones, machine learning y visualización de información."
+            self.textos_json["perfil_profesional"]["perfil1"]
         )
         perfil1.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
         perfil2 = self.doc.add_paragraph(
-            "Experiencia en la implementación de modelos de Machine Learning avanzados, incluyendo redes neuronales profundas, convolucionales (CNN), " \
-            "recurrentes (LSTM) y modelos de lenguaje (LLM). Capacidad demostrada en la creación de modelos propios y en la adaptación de arquitecturas existentes " \
-            "mediante técnicas de fine-tuning, orientadas a resolver necesidades específicas de negocio y optimizar la toma de decisiones."
-         )
+            self.textos_json["perfil_profesional"]["perfil2"]
+        )
         perfil2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
         perfil3 = self.doc.add_paragraph(
-            "Con visión estratégica, aporto la capacidad de transformar datos en conocimiento accionable y de impulsar la innovación tecnológica en sectores " \
-            "como banca, consultoría y corporativo."
+            self.textos_json["perfil_profesional"]["perfil3"]
         )
         perfil3.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
         perfil4 = self.doc.add_paragraph(
-            "Amplios conocimientos de Hadoop y Spark para entornos Big Data."
+            self.textos_json["perfil_profesional"]["perfil4"]
             
         )
         perfil4.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
         perfil5 = self.doc.add_paragraph(
-            
-            "Más de 10 años de experiencia en proyectos tecnológicos y energéticos."
+            self.textos_json["perfil_profesional"]["perfil5"]
         )
         perfil5.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
@@ -173,18 +172,8 @@ class Documento:
         self.add_colored_heading("Experiencia Profesional", 1)
 
         exp1 = self.doc.add_paragraph()
-        exp1.add_run("Desarrollador / Analista - Grupo Intermarkit (2022 - Actualidad)").bold = True
-        experiencia = [
-            "Desarrollo de soluciones de análisis de datos en Python y SQL.",
-            "Desarrollo de aplicaciones java (Spring Boot) y python (FastAPI, Flask) para web-Backend.",
-            "Automatización de procesos ETL y explotación de bases de datos.",
-            "Visualización de resultados y KPIs con Power BI y Tableau.",
-            "Desarrollo de proyectos de visión artificial con modelos de segmentación y detección.",
-            "Minería de datos, con aplicación de técnicas de clustering y segmentación.",
-            "Web scraping, orientado a la extracción, estructuración y análisis de información desde diversas fuentes y análisis con modelos de lenguaje LLM tipo "
-            "Bert, gpt etc.",
-            "Trabajo en entornos cloud y metodologías ágiles."
-        ]
+        exp1.add_run(self.textos_json["experiencia_profesional"]["experiencia1"]["titulo"]).bold = True
+        experiencia = self.textos_json["experiencia_profesional"]["experiencia1"]["desarrollo"]
         for item in experiencia:
             bullet = self.doc.add_paragraph(f"•\t{item}")
             bullet.paragraph_format.left_indent = Pt(18)         # sangría para alinear con el texto
@@ -193,13 +182,15 @@ class Documento:
             bullet.paragraph_format.line_spacing = 1.0 
 
         exp2 = self.doc.add_paragraph()
-        exp2.add_run("Jefe de Operaciones / Servicio - UTE ESE CLECE - Gas Natural Fenosa (2012 - 2022)").bold = True
-        operaciones = [
-            "Dirección de proyectos de eficiencia energética de gran escala (>10MW).",
-            "Desarrollo de aplicación en C# con MySQL para gestión de datos operativos.",
-            "Coordinación de equipos multidisciplinares y control de KPIs.",
-            "Implementación de soluciones de monitorización digital de instalaciones."
-        ]
+        exp2.add_run(self.textos_json["experiencia_profesional"]["experiencia2"]["titulo"]).bold = True
+        operaciones = self.textos_json["experiencia_profesional"]["experiencia2"]["desarrollo"]
+        for item in operaciones:
+            bullet = self.doc.add_paragraph(f"•\t{item}")
+            bullet.paragraph_format.left_indent = Pt(18)         # sangría para alinear con el texto
+            bullet.paragraph_format.first_line_indent = Pt(-18)  # primera línea “sale” la viñeta
+            bullet.paragraph_format.space_after = Pt(0)
+            bullet.paragraph_format.line_spacing = 1.0 
+        
         for item in operaciones:
             bullet = self.doc.add_paragraph(f"•\t{item}")
             bullet.paragraph_format.left_indent = Pt(18)         # sangría para alinear con el texto
@@ -208,31 +199,24 @@ class Documento:
             bullet.paragraph_format.line_spacing = 1.0 
 
         exp3 = self.doc.add_paragraph()
-        exp3.add_run("Responsable de Proyectos e Instalaciones - Energía y Servicios Energéticos Plus S.A.\n").bold = True
-        exp3.add_run("Gestión de proyectos energéticos con preferencia en control de datos técnicos y procesos.")
+        exp3.add_run(self.textos_json["experiencia_profesional"]["experiencia3"]["titulo"]).bold = True
+        exp3.add_run(self.textos_json["experiencia_profesional"]["experiencia3"]["desarrollo"])
 
         exp4 = self.doc.add_paragraph()
-        exp4.add_run("Director Técnico - Audiner Asesores Energéticos S.L.").bold = True
-
+        exp4.add_run(self.textos_json["experiencia_profesional"]["experiencia4"]["titulo"]).bold = True
         exp5 = self.doc.add_paragraph()
-        exp5.add_run("Jefe de Sector - Giroa S.A.U. (Grupo Veolia), Asturias").bold = True
+        exp5.add_run(self.textos_json["experiencia_profesional"]["experiencia5"]["titulo"]).bold = True
 
         exp6 = self.doc.add_paragraph()
-        exp6.add_run("Jefe de Servicio - Integra - Clece S.A. (Grupo ACS - Dragados)").bold = True
+        exp6.add_run(self.textos_json["experiencia_profesional"]["experiencia6"]["titulo"]).bold = True
 
         exp7 = self.doc.add_paragraph()
-        exp7.add_run("Inspector Técnico - ECA S.A.").bold = True
+        exp7.add_run(self.textos_json["experiencia_profesional"]["experiencia7"]["titulo"]).bold = True
 
     def logros(self):
         # ===== LOGROS DESTACADOS =====
         self.add_colored_heading("Logros Destacados", 1)
-        logros = [
-            "Estudio analítico para el aumento de potencia instalada en planta de producción de frío industrial en MercaMadrid.",
-            "Optimización del consumo energético en Complejo Ministerial mediante análisis predictivo y modelado estadístico.",
-            "Proyectos de visión artificial, aplicando redes neuronales profundas para la detección y clasificación de patrones en imágenes.",
-            "Desarrollo de aplicaciones web backend en Java, integradas con bases de datos y orientadas a la gestión y explotación de información.",
-            "Minería de datos y clustering para segmentación y descubrimiento de insights en grandes volúmenes de información."
-            ]
+        logros = self.textos_json["logros_destacados"]["logros"]
         
         for item in logros:
             bullet = self.doc.add_paragraph(f"•\t{item}")
@@ -244,12 +228,7 @@ class Documento:
     def formacion(self):
         # ===== FORMACIÓN =====
         self.add_colored_heading("Formación Académica", 1)
-        formacion = [
-            "Máster Universitario en Big Data y Ciencia de Datos - Universidad Internacional de Valencia (VIU)",
-            "Experto Universitario en Programación Python y Ciencia de Datos - VIU",    
-            "Experto Universitario en DevOps y Cloud Computing - UNIR",
-            "Ingeniero Técnico de Minas - Universidad de Oviedo"
-        ]
+        formacion = self.textos_json["formacion_academica"]["formacion"]
         for item in formacion:
             bullet = self.doc.add_paragraph()
             run = bullet.add_run(f"•\t{item}")
@@ -264,13 +243,7 @@ class Documento:
     def habilidades(self):
         # ===== HABILIDADES TÉCNICAS =====
         self.add_colored_heading("Habilidades Técnicas", 1)
-        habilidades = [
-            "Python (pandas, NumPy, scikit-learn, matplotlib, seaborn, sqlAlchemy, Pydantic, Alembic), SQL, C# .NET, Java, C/C++.",
-            "Machine Learning, Big Data (Hadoop, Spark).",
-            "Cloud Computing (AWS, Azure, GCP), DevOps, Git.",
-            "Power BI, Tableau, Qlikview, Looker.",
-            "Metodologías Agile/Scrum."
-        ]
+        habilidades = self.textos_json["habilidades_tecnicas"]["habilidades"]
         for item in habilidades:
             bullet = self.doc.add_paragraph(f"•\t{item}")
             bullet.paragraph_format.left_indent = Pt(20)         # sangría para alinear con el texto
@@ -281,11 +254,11 @@ class Documento:
     def idiomas(self):
         # ===== IDIOMAS =====
         self.add_colored_heading("Idiomas", 1)
-        self.doc.add_paragraph("• Español (Nativo)\n• Inglés (Nivel alto – lectura, escritura y expresión oral)")
+        self.doc.add_paragraph("• " + self.textos_json["idiomas"]["idioma1"][0] + "\n• " + self.textos_json["idiomas"]["idioma2"][0])
 
     def guardar(self):
         # Guardar documento
-        output_path_visual = f"../../CV/CV_Miguel_Angel_Lorenzo_Villoria_Data_Visual_{self.fecha.month}{self.fecha.day}.docx"
+        output_path_visual = f"../../CV/CV_Miguel_Angel_Lorenzo_Villoria_Data_Visual_{self.fecha.month}_{self.fecha.day}.docx"
         self.doc.save(output_path_visual)
 
         output_path_visual
