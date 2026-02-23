@@ -168,13 +168,6 @@ class Documento:
         )
         perfil5.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
 
-
-    def experiencia_prof(self):
-        # ===== EXPERIENCIA PROFESIONAL =====
-        self.add_colored_heading(self.translate.translate("Experiencia Profesional", dest='en').text, 1)
-
-        exp1 = self.doc.add_paragraph()
-        exp1.add_run(self.translate.translate("Desarrollador / Analista - Grupo Intermarkit (2022 - Actualidad)", dest='en').text).bold = True
     def experiencia_prof(self):
         # ===== EXPERIENCIA PROFESIONAL =====
         self.add_colored_heading(self.translate.translate("Experiencia Profesional", dest='en').text, 1)
