@@ -1,3 +1,4 @@
+import json
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
@@ -12,6 +13,10 @@ class Documento:
         self.doc = Document()
         self.fecha = datetime.now()
         self.translate = Translator()
+        
+        with open('texto_comun.json', 'r', encoding='utf-8') as f:
+            self.textos_json = json.load(f)
+
 
     def ecabezado(self):
         # margenes
@@ -142,34 +147,27 @@ class Documento:
         # ===== PERFIL PROFESIONAL =====
         self.add_colored_heading(self.translate.translate("Perfil Profesional", dest='en').text, 1)
         perfil1 = self.doc.add_paragraph(
-            self.translate.translate("Desarrollador / Analista de Datos con formación avanzada en Big Data, Ciencia de Datos y Cloud Computing. " \
-            "Especialista en análisis de datos con Python y SQL no SQL, desarrollo de aplicaciones, machine learning y " \
-            "visualización de información.", dest='en').text
+            self.translate.translate(self.textos_json["perfil_profesional"]["perfil1"], dest='en').text
         )
         perfil1.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
         perfil2 = self.doc.add_paragraph(
-            self.translate.translate("Experiencia en la implementación de modelos de Machine Learning avanzados, incluyendo redes neuronales profundas, " \
-            "convolucionales (CNN), recurrentes (LSTM) y modelos de lenguaje (LLM). Capacidad demostrada en la creación de modelos propios y " \
-            "en la adaptación de arquitecturas existentes mediante técnicas de fine-tuning, orientadas a resolver necesidades específicas de negocio y " \
-            "optimizar la toma de decisiones.", dest='en').text
+            self.translate.translate(self.textos_json["perfil_profesional"]["perfil2"], dest='en').text
          )
         perfil2.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
         perfil3 = self.doc.add_paragraph(
-            self.translate.translate("Con visión estratégica, aporto la capacidad de transformar datos en conocimiento accionable y de " \
-            "impulsar la innovación " \
-            "tecnológica en sectores como banca, consultoría y corporativo.", dest='en').text
+            self.translate.translate(self.textos_json["perfil_profesional"]["perfil3"], dest='en').text
         )
         perfil3.alignment = WD_PARAGRAPH_ALIGNMENT.JUSTIFY
         perfil4 = self.doc.add_paragraph(
-            self.translate.translate("Amplios conocimientos de Hadoop y Spark para entornos Big Data.", dest='en').text
+            self.translate.translate(self.textos_json["perfil_profesional"]["perfil4"], dest='en').text
             
         )
         perfil4.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
         perfil5 = self.doc.add_paragraph(
-            
-            self.translate.translate("Más de 10 años de experiencia en proyectos tecnológicos y energéticos.", dest='en').text
+            self.translate.translate(self.textos_json["perfil_profesional"]["perfil5"], dest='en').text
         )
         perfil5.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+
 
     def experiencia_prof(self):
         # ===== EXPERIENCIA PROFESIONAL =====
@@ -177,69 +175,47 @@ class Documento:
 
         exp1 = self.doc.add_paragraph()
         exp1.add_run(self.translate.translate("Desarrollador / Analista - Grupo Intermarkit (2022 - Actualidad)", dest='en').text).bold = True
-        experiencia = [
-            "Desarrollo de soluciones de análisis de datos en Python y SQL.",
-            "Desarrollo de aplicaciones java (Spring Boot) y python (FastAPI, Flask) para web-Backend.",
-            "Automatización de procesos ETL y explotación de bases de datos.",
-            "Visualización de resultados y KPIs con Power BI y Tableau.",
-            "Desarrollo de proyectos de visión artificial con modelos de segmentación y detección.",
-            "Minería de datos, con aplicación de técnicas de clustering y segmentación.",
-            "Web scraping, orientado a la extracción, estructuración y análisis de información desde diversas fuentes y análisis con modelos de lenguaje LLM tipo Bert, gpt etc.",
-            "Trabajo en entornos cloud y metodologías ágiles."
-        ]
-        for item in experiencia:
+    def experiencia_prof(self):
+        # ===== EXPERIENCIA PROFESIONAL =====
+        self.add_colored_heading(self.translate.translate("Experiencia Profesional", dest='en').text, 1)
+
+        # Experiencia 1
+        exp_data1 = self.textos_json["experiencia_profesional"]["experiencia1"]
+        exp1 = self.doc.add_paragraph()
+        exp1.add_run(self.translate.translate(exp_data1["titulo"], dest='en').text).bold = True
+        for item in exp_data1["desarrollo"]:
             bullet = self.doc.add_paragraph(f"•\t{self.translate.translate(item, dest='en').text}")
             bullet.paragraph_format.left_indent = Pt(18)         # sangría para alinear con el texto
             bullet.paragraph_format.first_line_indent = Pt(-18)  # primera línea “sale” la viñeta
             bullet.paragraph_format.space_after = Pt(0)
             bullet.paragraph_format.line_spacing = 1.0 
 
+        # Experiencia 2
+        exp_data2 = self.textos_json["experiencia_profesional"]["experiencia2"]
         exp2 = self.doc.add_paragraph()
-        exp2.add_run(self.translate.translate("Jefe de Operaciones / Servicio ", dest='en').text).bold = True
-        exp2.add_run("- UTE ESE CLECE - Gas Natural Fenosa (2012 - 2022)").bold = True
-        operaciones = [
-            "Dirección de proyectos de eficiencia energética de gran escala (>10MW).",
-            "Desarrollo de aplicación en C# con MySQL para gestión de datos operativos.",
-            "Coordinación de equipos multidisciplinares y control de KPIs.",
-            "Implementación de soluciones de monitorización digital de instalaciones."
-        ]
-        for item in operaciones:
+        exp2.add_run(self.translate.translate(exp_data2["titulo"], dest='en').text).bold = True
+        for item in exp_data2["desarrollo"]:
             bullet = self.doc.add_paragraph(f"•\t{self.translate.translate(item, dest='en').text}")
             bullet.paragraph_format.left_indent = Pt(18)         # sangría para alinear con el texto
             bullet.paragraph_format.first_line_indent = Pt(-18)  # primera línea “sale” la viñeta
             bullet.paragraph_format.space_after = Pt(0)
             bullet.paragraph_format.line_spacing = 1.0 
 
-        exp3 = self.doc.add_paragraph()
-        translated = self.translate.translate("Responsable de Proyectos e Instalaciones ", dest='en').text
-        translated = translated.capitalize()
-        exp3.add_run(translated).bold = True
-        exp3.add_run("- Energía y Servicios Energéticos Plus S.A.\n").bold = True
-        exp3.add_run(self.translate.translate("Gestión de proyectos energéticos con preferencia en control de datos técnicos y procesos.", dest='en').text)
+        # Experiencias restantes (3-7)
+        for i in range(3, 8):
+            key = f"experiencia{i}"
+            if key in self.textos_json["experiencia_profesional"]:
+                exp_data = self.textos_json["experiencia_profesional"][key]
+                exp = self.doc.add_paragraph()
+                exp.add_run(self.translate.translate(exp_data["titulo"], dest='en').text).bold = True
+                if "desarrollo" in exp_data and exp_data["desarrollo"]:
+                     exp.add_run(f"\n{self.translate.translate(exp_data['desarrollo'], dest='en').text}")
 
-        exp4 = self.doc.add_paragraph()
-        exp4.add_run(self.translate.translate("Director Técnico", dest='en').text).bold = True
-        exp4.add_run("- Audiner Asesores Energéticos S.L.").bold = True
-
-        exp5 = self.doc.add_paragraph()
-        exp5.add_run(self.translate.translate("Jefe de Sector - Giroa S.A.U. (Grupo Veolia), Asturias", dest='en').text).bold = True
-
-        exp6 = self.doc.add_paragraph()
-        exp6.add_run(self.translate.translate("Jefe de Servicio - Integra - Clece S.A. (Grupo ACS - Dragados)", dest='en').text).bold = True
-
-        exp7 = self.doc.add_paragraph()
-        exp7.add_run(self.translate.translate("Inspector Técnico - ECA S.A.", dest='en').text).bold = True
 
     def logros(self):
         # ===== LOGROS DESTACADOS =====
         self.add_colored_heading(self.translate.translate("Logros Destacados", dest='en').text, 1)
-        logros = [
-            "Estudio analítico para el aumento de potencia instalada en planta de producción de frío industrial en MercaMadrid.",
-            "Optimización del consumo energético en Complejo Ministerial mediante análisis predictivo y modelado estadístico.",
-            "Proyectos de visión artificial, aplicando redes neuronales profundas para la detección y clasificación de patrones en imágenes.",
-            "Desarrollo de aplicaciones web backend en Java, integradas con bases de datos y orientadas a la gestión y explotación de información.",
-            "Minería de datos y clustering para segmentación y descubrimiento de insights en grandes volúmenes de información."
-            ]
+        logros = self.textos_json["logros_destacados"]["logros"]
         
         for item in logros:
             bullet = self.doc.add_paragraph(f"•\t{self.translate.translate(item, dest='en').text}")
@@ -248,15 +224,11 @@ class Documento:
             bullet.paragraph_format.space_after = Pt(0)
             bullet.paragraph_format.line_spacing = 1.0 
 
+
     def formacion(self):
         # ===== FORMACIÓN =====
         self.add_colored_heading(self.translate.translate("Formación Académica", dest='en').text, 1)
-        formacion = [
-            "Máster Universitario en Big Data y Ciencia de Datos - Universidad Internacional de Valencia (VIU)",
-            "Experto Universitario en Programación Python y Ciencia de Datos - VIU",    
-            "Experto Universitario en DevOps y Cloud Computing - UNIR",
-            "Ingeniero Técnico de Minas - Universidad de Oviedo"
-            ]
+        formacion = self.textos_json["formacion_academica"]["formacion"]
         
         for item in formacion:
             bullet = self.doc.add_paragraph()
@@ -269,16 +241,11 @@ class Documento:
 
         self.doc.add_paragraph(self.translate.translate("Otros cursos: Máster en Gestión de Calidad y Medio Ambiente, Técnico de Prevención de Riesgos Laborales.", dest='en').text)
 
+
     def habilidades(self):
         # ===== HABILIDADES TÉCNICAS =====
         self.add_colored_heading(self.translate.translate("Habilidades Técnicas", dest='en').text, 1)
-        habilidades = [
-            "Python (pandas, NumPy, scikit-learn, matplotlib, seaborn, sqlAlchemy, Pydantic, Alembic), SQL, C# .NET, Java, C/C++.",
-            "Machine Learning, Big Data (Hadoop, Spark).",
-            "Cloud Computing (AWS, Azure, GCP), DevOps, Git.",
-            "Power BI, Tableau, Qlikview, Looker.",
-            "Metodologías Agile/Scrum."
-        ]
+        habilidades = self.textos_json["habilidades_tecnicas"]["habilidades"]
         for item in habilidades:
             bullet = self.doc.add_paragraph(f"•\t{self.translate.translate(item, dest='en').text}")
             bullet.paragraph_format.left_indent = Pt(20)         # sangría para alinear con el texto
@@ -286,10 +253,14 @@ class Documento:
             bullet.paragraph_format.space_after = Pt(0)
             bullet.paragraph_format.line_spacing = 1.0 
 
+
     def idiomas(self):
         # ===== IDIOMAS =====
         self.add_colored_heading(self.translate.translate("Idiomas", dest='en').text, 1)
-        self.doc.add_paragraph(self.translate.translate("• Español (Nativo)\n• Inglés (Nivel alto – lectura, escritura y expresión oral)", dest='en').text)
+        idioma1 = ", ".join(self.textos_json["idiomas"]["idioma1"])
+        idioma2 = ", ".join(self.textos_json["idiomas"]["idioma2"])
+        self.doc.add_paragraph(self.translate.translate(f"• {idioma1}\n• {idioma2}", dest='en').text)
+
 
     def guardar(self):
         # Guardar documento
