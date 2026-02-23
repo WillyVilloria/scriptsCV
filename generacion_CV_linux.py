@@ -93,14 +93,14 @@ class Documento:
         normal_style = self.doc.styles['Normal']
 
         # Cambiar fuente
-        font = normal_style.font
+        font = normal_style.font # pyright: ignore[reportAttributeAccessIssue]
         font.name = 'Cambria'
         font.size = Pt(11)
         font.bold = False
         font.color.rgb = RGBColor(0, 0, 0)  # negro
 
         # Cambiar párrafo base (alineación, espaciado, etc.)
-        paragraph_format = normal_style.paragraph_format
+        paragraph_format = normal_style.paragraph_format # pyright: ignore[reportAttributeAccessIssue]
         paragraph_format.space_after = Pt(6)
         paragraph_format.space_before = Pt(6)
         paragraph_format.line_spacing = 1.15
@@ -115,7 +115,7 @@ class Documento:
         heading_style = self.doc.styles[style_name]
 
         # Modificar formato de párrafo del estilo (afecta a todos los títulos de ese nivel)
-        para_format = heading_style.paragraph_format
+        para_format = heading_style.paragraph_format # pyright: ignore[reportAttributeAccessIssue]
         para_format.space_before = Pt(16)   # Espaciado anterior
         para_format.space_after = Pt(8)    # Espaciado posterior
 

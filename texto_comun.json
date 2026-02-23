@@ -1,15 +1,15 @@
 {
     "perfil_profesional": {
-        "perfil1": "Desarrollador / Analista de Datos con formación avanzada en Big Data, Ciencia de Datos y Cloud Computing. Especialista en análisis de datos con Python y SQL no SQL, desarrollo de aplicaciones, machine learning y visualización de información.",
+        "perfil1": "Desarrollador / Analista de Datos con formación avanzada en Big Data, Ciencia de Datos y Cloud Computing. Especialista en análisis de datos con Python y SQL no SQL, desarrollo de aplicaciones APIs, machine learning y visualización de información.",
         "perfil2": "Experiencia en la implementación de modelos de Machine Learning avanzados, incluyendo redes neuronales profundas, convolucionales (CNN), recurrentes (LSTM) y modelos de lenguaje (LLM). Capacidad demostrada en la creación de modelos propios y en la adaptación de arquitecturas existentes mediante técnicas de fine-tuning, orientadas a resolver necesidades específicas de negocio y optimizar la toma de decisiones.",
-        "perfil3": "Con visión estratégica, aporto la capacidad de transformar datos en conocimiento accionable y de impulsar la innovación tecnológica en sectores como banca, consultoría y corporativo.",
+        "perfil3": "Desarrollador con sólida experiencia en la creación de aplicaciones web backend utilizando Java (Spring Boot) y Python (FastAPI, Flask), integradas con bases de datos relacionales y orientadas a la gestión y explotación de información. Capacidad para diseñar e implementar soluciones escalables y eficientes (alquitectura clean, DDD), adaptadas a las necesidades del negocio.",
         "perfil4": "Amplios conocimientos de Hadoop y Spark para entornos Big Data.",
-        "perfil5": "Más de 10 años de experiencia en proyectos tecnológicos y energéticos."
+        "perfil5": "Capacidad analítica para interpretar los requisitos del negocio y traducirlos en soluciones técnicas efectivas, con un enfoque orientado a la generación de valor a través de la explotación de datos y la automatización de procesos."
     },
     "experiencia_profesional":{
         "experiencia1": {"titulo": "Desarrollador / Analista - Grupo Intermarkit (2022 - Actualidad)", "desarrollo": [
-            "Desarrollo de soluciones de análisis de datos en Python y SQL.",
-            "Desarrollo de aplicaciones java (Spring Boot) y python (FastAPI, Flask) para web-Backend.",
+            "Desarrollo de aplicaciones java (Spring Boot) para web-Backend complejos y microservicios. Uso de mybatis, hibernate, jpa para la integración con bases de datos relacionales.",
+            "Desarrollo de aplicaciones python (FastAPI, Flask) para web-Backend. Uso de sqlAlchemy para la integración con bases de datos relacionales y arquitectura clean, DDD para la creación de soluciones escalables y eficientes.",
             "Automatización de procesos ETL y explotación de bases de datos.",
             "Visualización de resultados y KPIs con Power BI y Tableau.",
             "Desarrollo de proyectos de visión artificial con modelos de segmentación y detección.",
@@ -30,11 +30,11 @@
         "experiencia7": {"titulo": "Inspector Técnico - ECA S.A."}
     },
     "logros_destacados": {"logros": [
-            "Estudio analítico para el aumento de potencia instalada en planta de producción de frío industrial en MercaMadrid.",
-            "Optimización del consumo energético en Complejo Ministerial mediante análisis predictivo y modelado estadístico.",
-            "Proyectos de visión artificial, aplicando redes neuronales profundas para la detección y clasificación de patrones en imágenes.",
-            "Desarrollo de aplicaciones web backend en Java, integradas con bases de datos y orientadas a la gestión y explotación de información.",
-            "Minería de datos y clustering para segmentación y descubrimiento de insights en grandes volúmenes de información."]
+            "Proyecto con java (Spring-boot) para la gestión de stakeholder en el departamento de relación con los medios de comunicación de una de las principales cadenas de supermercados a nivel nacional, con integración de bases de datos relacionales",
+            "Proyecto con python (FastAPI) para la realización de un API para dar soporte a frontend y aplicación móvil para la gestión de detección de imágenes y texto en usuarios con discapacidades visuales y/o conginitivas, con integración de bases de datos relacionales y no relacionales.",
+            "Proyectos de visión artificial con python, aplicando redes neuronales profundas para la detección, clasificación y segmentación de imágenes.",
+            "Proyecto de web scraping con python (selenium y beautifulsoup) para la extracción y análisis de información desde diversas fuentes, con aplicación de modelos de lenguaje LLM para la interpretación y generación de insights a partir de los datos obtenidos.",
+            "Minería de datos y clustering para segmentación y descubrimiento de insights en grandes volúmenes de información obtenida de bases de datos relacionales y no relacionales."]
     },
     "formacion_academica": {"formacion": [
             "Máster Universitario en Big Data y Ciencia de Datos - Universidad Internacional de Valencia (VIU)",
@@ -44,6 +44,7 @@
     },
     "habilidades_tecnicas": {"habilidades": [
             "Python (pandas, NumPy, scikit-learn, matplotlib, seaborn, sqlAlchemy, Pydantic, Alembic), SQL, C# .NET, Java, C/C++.",
+            "Docker, Kubernetes, Jenkins.",
             "Machine Learning, Big Data (Hadoop, Spark).",
             "Cloud Computing (AWS, Azure, GCP), DevOps, Git.",
             "Power BI, Tableau, Qlikview, Looker.",
