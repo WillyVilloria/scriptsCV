@@ -1,0 +1,16 @@
+{
+    "include": [
+        "."
+    ],
+    "exclude": [
+        "**/node_modules",
+        "**/__pycache__",
+        ".git"
+    ],
+    "venvPath": "C:\\Users\\miguelUser\\.virtualenvs",
+    "venv": "scriptsCV-ET0My5j6",
+    "pythonVersion": "3.12",
+    "typeCheckingMode": "basic",
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false
+}

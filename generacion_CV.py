@@ -4,7 +4,7 @@ from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
-from datetime import datetime 
+from datetime import datetime
 from docx.shared import Cm
 
 # Crear documento
@@ -13,12 +13,11 @@ class Documento:
     def __init__(self):
         self.doc = Document()
         self.fecha = datetime.now()
-        #abro el archivo json de texto común
 
         with open('texto_comun.json', 'r', encoding='utf-8') as f:
             self.textos_json = json.load(f)
 
-    def ecabezado(self):
+    def encabezado(self):
         # margenes
         section = self.doc.sections[0]
         section.header_distance = Cm(1)
@@ -97,14 +96,14 @@ class Documento:
         normal_style = self.doc.styles['Normal']
 
         # Cambiar fuente
-        font = normal_style.font
+        font = normal_style.font # pyright: ignore[reportAttributeAccessIssue]
         font.name = 'Cambria'
         font.size = Pt(11)
         font.bold = False
         font.color.rgb = RGBColor(0, 0, 0)  # negro
 
         # Cambiar párrafo base (alineación, espaciado, etc.)
-        paragraph_format = normal_style.paragraph_format
+        paragraph_format = normal_style.paragraph_format # pyright: ignore[reportAttributeAccessIssue]
         paragraph_format.space_after = Pt(6)
         paragraph_format.space_before = Pt(6)
         paragraph_format.line_spacing = 1.15
@@ -119,7 +118,7 @@ class Documento:
         heading_style = self.doc.styles[style_name]
 
         # Modificar formato de párrafo del estilo (afecta a todos los títulos de ese nivel)
-        para_format = heading_style.paragraph_format
+        para_format = heading_style.paragraph_format # pyright: ignore[reportAttributeAccessIssue]
         para_format.space_before = Pt(16)   # Espaciado anterior
         para_format.space_after = Pt(8)    # Espaciado posterior
 
@@ -191,13 +190,6 @@ class Documento:
             bullet.paragraph_format.space_after = Pt(0)
             bullet.paragraph_format.line_spacing = 1.0 
         
-        for item in operaciones:
-            bullet = self.doc.add_paragraph(f"•\t{item}")
-            bullet.paragraph_format.left_indent = Pt(18)         # sangría para alinear con el texto
-            bullet.paragraph_format.first_line_indent = Pt(-18)  # primera línea “sale” la viñeta
-            bullet.paragraph_format.space_after = Pt(0)
-            bullet.paragraph_format.line_spacing = 1.0 
-
         exp3 = self.doc.add_paragraph()
         exp3.add_run(self.textos_json["experiencia_profesional"]["experiencia3"]["titulo"]).bold = True
         exp3.add_run(self.textos_json["experiencia_profesional"]["experiencia3"]["desarrollo"])
@@ -261,11 +253,11 @@ class Documento:
         output_path_visual = f"../../CV/CV_Miguel_Angel_Lorenzo_Villoria_Data_Visual_{self.fecha.month}_{self.fecha.day}.docx"
         self.doc.save(output_path_visual)
 
-        output_path_visual
+        #output_path_visual
 
 if __name__ == "__main__":
     document = Documento()
-    document.ecabezado()
+    document.encabezado()
     document.pie()
     document.estilo()
     document.cabecera()
